@@ -1,0 +1,5 @@
+build-all
+**/build
+**/*.elf
+**/*.fx
+**/compile_commands.json
