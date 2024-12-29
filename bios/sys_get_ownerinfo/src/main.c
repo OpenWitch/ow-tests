@@ -12,10 +12,11 @@ const char *sex_string[] = {"?", "Male", "Female"};
 const char *bloodtype_string[] = {"?", "A", "B", "AB", "0"};
 
 void main(void) {
-	sys_get_ownerinfo(sizeof(owner_info), &owner_info);
+	uint16_t result = sys_get_ownerinfo(sizeof(owner_info), &owner_info);
 
 	text_screen_init();
-	text_put_string(2, 1, "Owner information:");
+	text_put_string(1, 1, "Owner information (    ):");
+	text_put_numeric(20, 1, 4, NUM_PADZERO | NUM_HEXA, result);
 
 	text_put_string(2, 3, "Name:");
         text_put_substring(8, 3, owner_info.name, 16);
