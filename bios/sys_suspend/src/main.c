@@ -13,28 +13,6 @@
 
 #define _heap ((uint8_t*) (*((uint16_t*) 0x005E)))
 
-static inline uint16_t sys_suspend(uint8_t slot) {
-	uint16_t result;
-	__asm volatile (
-		"int $0x17"
-		: "=a" (result)
-		: "a" ((uint16_t) (0x0B00 + slot))
-		: "cc", "memory"
-	);
-	return result;
-}
-
-static inline uint16_t sys_resume(uint8_t slot) {
-	uint16_t result;
-	__asm volatile (
-		"int $0x17"
-		: "=a" (result)
-		: "a" ((uint16_t) (0x0C00 + slot))
-		: "cc", "memory"
-	);
-	return result;
-}
-
 bool flag = false;
 
 void main(void) {
